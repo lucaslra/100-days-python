@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "100-days-python"
+version = "0.1.0"
+description = "Exercising some Python muscle"
+authors = ["Lucas Araujo <luribeiro@schubergphilis.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+beepy = "^1.0.7"
+
+[tool.poetry.dev-dependencies]
+ipython = "^7.22.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
