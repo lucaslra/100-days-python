@@ -8,6 +8,7 @@ authors = ["Lucas Araujo <luribeiro@schubergphilis.com>"]
 python = "^3.9"
 beepy = "^1.0.7"
 pytest = "^6.2.3"
+pytest-cov = "^2.11.1"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.22.0"
