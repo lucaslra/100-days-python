@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
+
+
+import random
+
+
+# In[4]:
 
 
 NAMES = ['arnold schwarzenegger', 'alec baldwin', 'bob belderbos',
@@ -12,7 +18,7 @@ NAMES = ['arnold schwarzenegger', 'alec baldwin', 'bob belderbos',
 
 # #### Can you write a simple list comprehension to convert these names to title case (brad pitt -> Brad Pitt).
 
-# In[2]:
+# In[5]:
 
 
 [name.title() for name in NAMES]
@@ -20,7 +26,7 @@ NAMES = ['arnold schwarzenegger', 'alec baldwin', 'bob belderbos',
 
 # #### Or reverse the first and last name?
 
-# In[3]:
+# In[6]:
 
 
 [' '.join(reversed(name.split())) for name in NAMES]
@@ -34,15 +40,18 @@ NAMES = ['arnold schwarzenegger', 'alec baldwin', 'bob belderbos',
 #     next(pairs)
 # ```
 
-# In[13]:
+# In[20]:
 
+
+gen_NAMES = NAMES[:]
+random.shuffle(gen_NAMES)
 
 def get_name(idx):
-    return NAMES[idx].split()[0].title()
+    return gen_NAMES[idx].split()[0].title()
 
 def gen_pairs():
     idx = 1
-    while idx <= len(NAMES) - 1:
+    while idx <= len(gen_NAMES) - 1:
         r = f'{get_name(idx-1)} teams up with {get_name(idx)}'
         idx+=2
         yield r
@@ -55,7 +64,7 @@ def gen_pairs():
 # Alec teams up with Julian
 # ```
 
-# In[14]:
+# In[21]:
 
 
 pairs = gen_pairs()
