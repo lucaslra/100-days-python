@@ -10,6 +10,7 @@ beepy = "^1.0.7"
 pytest = "^6.2.3"
 pytest-cov = "^2.11.1"
 jupyter = "^1.0.0"
+rich = "^10.1.0"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.22.0"
