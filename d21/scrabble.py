@@ -1,0 +1,37 @@
+import itertools
+import os
+import ssl
+import urllib.request
+
+# PREWORK
+ssl._create_default_https_context = ssl._create_unverified_context
+TMP = os.getenv("TMP", "/tmp")
+DICT = 'dictionary.txt'
+DICTIONARY = os.path.join(TMP, DICT)
+urllib.request.urlretrieve(
+    f'https://bites-data.s3.us-east-2.amazonaws.com/{DICT}',
+    DICTIONARY
+)
+
+with open(DICTIONARY) as f:
+    dictionary = set([word.strip().lower() for word in f.read().split()])
+
+
+def get_possible_dict_words(draw):
+    """Get all possible words from a draw (list of letters) which are
+       valid dictionary words. Use _get_permutations_draw and provided
+       dictionary"""
+    results = []
+    for word in _get_permutations_draw(draw):
+        if word in dictionary:
+            results.append(word)
+
+    return tuple(results)
+
+
+def _get_permutations_draw(draw):
+    """Helper to get all permutations of a draw (list of letters), hint:
+       use itertools.permutations (order of letters matters)"""
+    for l in range(len(draw)):
+        for word in itertools.permutations(draw, r=l):
+            yield ''.join(word).lower()
